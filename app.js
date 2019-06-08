@@ -83,6 +83,10 @@ const secondaryWindows = {
     obj: false,
     url: `file://${__dirname}/www/overlay.html`,
   },
+  shortcutLegend: {
+    obj: false,
+    url: `file://${__dirname}/www/legend.html`,
+  },
 };
 let manualUpdate = false;
 const viewerWindowPos = {};
@@ -298,7 +302,7 @@ const shouldQuit = app.makeSingleInstance(() => {
 });
 
 if (shouldQuit) {
-  app.quit();
+  app.exit();
 }
 
 app.on('ready', () => {
