@@ -458,6 +458,29 @@ ipcMain.on('show-text', (event, arg) => {
     createBroadcastFiles(arg);
   }
 });
+ipcMain.on('mimic-shabad', (event, arg) => {
+  const textLine = {
+    Line: {
+      Gurmukhi: arg.line,
+      English: arg.engTransl ? arg.engTransl : '',
+      Punjabi: arg.punjabiTransl ? arg.punjabiTransl : '',
+      Transliteration: arg.translit,
+    },
+  };
+  showLine(textLine);
+
+  if (viewerWindow) {
+    viewerWindow.webContents.send('mimic-shabad', arg);
+  } else {
+    createViewer({
+      send: 'mimic-shabad',
+      data: arg,
+    });
+  }
+  if (arg.live) {
+    createBroadcastFiles(arg);
+  }
+});
 
 ipcMain.on('presenter-view', (event, arg) => {
   if (viewerWindow) {

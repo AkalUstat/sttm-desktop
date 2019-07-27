@@ -161,7 +161,10 @@ global.platform.ipc.on('show-text', (event, data) => {
   document.querySelector('.viewer-controls').innerHTML = '';
   showText(data.text, data.isGurmukhi);
 });
-
+global.platform.ipc.on('mimic-shabad', (event, data) => {
+  document.querySelector('.viewer-controls').innerHTML = '';
+  mimicShabad(data.item);
+});
 global.platform.ipc.on('send-scroll', (event, pos) => {
   $scroll.scrollTo(
     0,
@@ -405,7 +408,7 @@ const showLine = (ShabadID, LineID, rows, mode) => {
         Object.assign(decks[ShabadID], shabad);
         break;
       case 'click':
-        /* if you click on verse when message is open (announcement, blank, waheguru) 
+        /* if you click on verse when message is open (announcement, blank, waheguru)
         it should hide the message deck and show the shabad deck */
         if ($message.classList.contains('active')) {
           $message.classList.remove('active');
@@ -436,6 +439,11 @@ const showText = (text, isGurmukhi = false) => {
 
   $message.appendChild(h('div.slide.active#announcement-slide', $textIs));
   castText(text, isGurmukhi);
+};
+const mimicShabad = object => {
+  hideDecks();
+
+  global.webview.send('show-line', { object });
 };
 
 const toggleSideMenu = () => {

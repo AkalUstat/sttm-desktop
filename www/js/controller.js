@@ -574,6 +574,12 @@ module.exports = {
     global.platform.ipc.send('show-empty-slide');
     global.platform.ipc.send('show-text', { text, isGurmukhi });
   },
+  sendMimicShabad(item) {
+    global.webview.send('show-empty-slide');
+    global.webview.send('mimic-shabad', { item });
+    global.platform.ipc.send('show-empty-slide');
+    global.platform.ipc.send('mimic-shabad', { item });
+  },
   sendScroll(pos) {
     global.platform.ipc.send('send-scroll', { pos });
   },
