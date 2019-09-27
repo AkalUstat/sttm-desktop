@@ -48,6 +48,16 @@
   }
 }
 
+@mixin apvLineHighlight($highlight) {
+  $line-bg: $highlight;
+  .akhandpaatt {
+    .slide.active {
+      .gurbani.gurmukhi {
+        background: red;
+      }
+    }
+  }
+}
 @mixin generateTheme(
   $type,
   $background-color,
@@ -56,6 +66,7 @@
   $translation,
   $teeka,
   $transliteration,
+  $apv-highlight,
   $visraam,
   $yamki
 ) {
@@ -84,5 +95,6 @@
     color: $transliteration;
   }
 
+  @include apvLineHighlight($apv-highlight);
   @include vishraamStyles($visraam, $yamki);
 }
