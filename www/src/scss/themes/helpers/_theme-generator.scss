@@ -51,13 +51,15 @@
 @mixin apvLineHighlight($highlight) {
   $line-bg: $highlight;
   .akhandpaatt {
-    .slide.active {
+    .slide {
       .gurbani.gurmukhi {
-        background: red;
+        background: $line-bg;
+        border-radius: 34px;
       }
     }
   }
 }
+
 @mixin generateTheme(
   $type,
   $background-color,
