@@ -429,16 +429,20 @@ const textWithTranslations = obj => {
   let deck;
   if (line.punjabi) {
     deck = h('div#shabad.textTranslations.deck.active', [
-      h('h1.gurbani.gurmukhi', line.gurmukhi),
-      h('h2.translation', line.english),
-      h('h2.teeka', line.punjabi || ''),
-      h('h2.transliteration', line.translit || anvaad.translit(line.gurmukhi)),
+      h('div#slide.active.center', [
+        h('h1.gurbani.gurmukhi', line.gurmukhi),
+        h('h2.translation', line.english),
+        h('h2.teeka', line.punjabi || ''),
+        h('h2.transliteration', line.translit || anvaad.translit(line.gurmukhi)),
+      ]),
     ]);
   } else {
     deck = h('div#shabad.textTranslations.deck.active', [
-      h('h1.gurbani.gurmukhi', line.gurmukhi),
-      h('h2.translation', line.english),
-      h('h2.transliteration', line.translit || anvaad.translit(line.gurmukhi)),
+      h('div#slide.active.center', [
+        h('h1.gurbani.gurmukhi', line.gurmukhi),
+        h('h2.translation', line.english),
+        h('h2.transliteration', line.translit || anvaad.translit(line.gurmukhi)),
+      ]),
     ]);
   }
   $viewer.appendChild(deck);
