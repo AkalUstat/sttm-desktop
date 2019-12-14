@@ -247,13 +247,26 @@ h2 {
 }
 
 /* ***** FONT SIZES ***** */
-@for $i from 1 through 20 {
-  .gurbani-#{$i} .gurbani,
-  .translation-#{$i} .translation,
-  .transliteration-#{$i} .transliteration,
-  .announcements-#{$i} .announcements,
-  .teeka-#{$i} .teeka {
-    font-size: #{$i}vh;
+&:not(akhandpaatt) {
+  @for $i from 1 through 20 {
+    .gurbani-#{$i} .gurbani,
+    .translation-#{$i} .translation,
+    .transliteration-#{$i} .transliteration,
+    .announcements-#{$i} .announcements,
+    .teeka-#{$i} .teeka {
+      font-size: #{$i}vh;
+    }
+  }
+}
+&.akhandpaatt {
+  @for $i from 1 through 10 {
+    .gurbani-#{2$i} .gurbani,
+    .translation-#{2$i} .translation,
+    .transliteration-#{2$i} .transliteration,
+    .announcements-#{2$i} .announcements,
+    .teeka-#{2$i} .teeka {
+      font-size: #{$i}vh;
+    }
   }
 }
 
