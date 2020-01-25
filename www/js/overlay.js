@@ -367,6 +367,12 @@ const themeObjects = {
     textColor: '#f00',
     gurbaniTextColor: '#f00',
   },
+  classic: {
+    label: 'classic',
+    bgColor: '#000',
+    textColor: '#f00',
+    gurbaniTextColor: '#f00',
+  },
 };
 
 const themeSwatchFactory = themeOptions => {
