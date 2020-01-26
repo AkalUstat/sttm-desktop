@@ -380,7 +380,52 @@ input[type='color'] {
     bottom: 9px;
   }
 }
+.layout-btn.left {
+  position: relative;
 
+  .layout-bar {
+    position: absolute;
+  }
+
+  .layout-bar-1 {
+    left: 0;
+  }
+
+  .layout-bar-2 {
+    left: 3px;
+  }
+
+  .layout-bar-3 {
+    left: 6px;
+  }
+
+  .layout-bar-4 {
+    left: 9px;
+  }
+}
+.layout-btn.right {
+  position: relative;
+
+  .layout-bar {
+    position: absolute;
+  }
+
+  .layout-bar-1 {
+    right: 0;
+  }
+
+  .layout-bar-2 {
+    right: 3px;
+  }
+
+  .layout-bar-3 {
+    right: 6px;
+  }
+
+  .layout-bar-4 {
+    right: 9px;
+  }
+}
 .cp-title {
   font-size: 14px;
   letter-spacing: 2px;

@@ -203,7 +203,6 @@ const toggleLarivaar = h(
   ),
   h('div.setting-label', `Use ${overlayVars.overlayLarivaar ? 'Padched' : 'Larivaar'}`),
 );
-
 const toggleCast = h(
   'div.input-wrap.cast-toggle',
   {
@@ -253,6 +252,22 @@ const toggleLogo = h(
   ),
   h('div.setting-label', 'Logo'),
 );
+const toggleClassic = h(
+  'div.input-wrap.logo-toggle',
+  {
+    onclick: evt => {
+      overlayVars.classicMode = !overlayVars.classicMode;
+      const $logoIcon = evt.currentTarget.querySelector('.cp-icon');
+      $logoIcon.classList.toggle('fa-toggle-on', overlayVars.classicMode);
+      $logoIcon.classList.toggle('fa-toggle-off', !overlayVars.classicMode);
+    },
+  },
+  h(
+    'div#logo-btn',
+    h(`i.fa.cp-icon.${overlayVars.classicMode ? 'fa-toggle-on' : 'fa-toggle-off'}`),
+  ),
+  h('div.setting-label', 'classic mode'),
+);
 
 const toggleAnnouncements = h(
   'div.input-wrap.announcement-toggle',
@@ -281,6 +296,7 @@ const toggleAnnouncements = h(
 /** Main Control Bar Items */
 controlPanel.append(toggleCast);
 controlPanel.append(toggleLogo);
+controlPanel.append(toggleClassic);
 controlPanel.append(toggleAnnouncements);
 controlPanel.append(separator);
 controlPanel.append(copyURLButton);
@@ -290,6 +306,8 @@ controlPanel.append(toggleLarivaar);
 const topLayoutBtn = layoutButtonFactory('top');
 const bottomLayoutBtn = layoutButtonFactory('bottom');
 const splitLayoutBtn = layoutButtonFactory('split');
+const leftLayoutButton = layoutButtonFactory('left');
+const rightLayoutButton = layoutButtonFactory('right');
 const gurbaniColor = colorInputFactory(
   'toggle-text',
   overlayVars.gurbaniTextColor,
@@ -314,7 +332,12 @@ textControls.append(separatorY());
 textControls.append(controlsFactory(changeBarSizeButton, 'Size'));
 textControls.append(controlsFactory(changeOpacityButton, 'Opacity'));
 textControls.append(separatorY());
-textControls.append(controlsFactory([topLayoutBtn, bottomLayoutBtn, splitLayoutBtn], 'Layout'));
+textControls.append(
+  controlsFactory(
+    [topLayoutBtn, bottomLayoutBtn, splitLayoutBtn, leftLayoutButton, rightLayoutButton],
+    'Layout',
+  ),
+);
 
 const themeSelector = document.querySelector('.theme-selector');
 
@@ -363,12 +386,6 @@ const themeObjects = {
   },
   neverForget: {
     label: 'never forget',
-    bgColor: '#000',
-    textColor: '#f00',
-    gurbaniTextColor: '#f00',
-  },
-  classic: {
-    label: 'classic',
     bgColor: '#000',
     textColor: '#f00',
     gurbaniTextColor: '#f00',

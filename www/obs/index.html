@@ -71,7 +71,13 @@
         document.querySelector('.o-gurbani').style.color =
           overlayPrefs.overlayVars.gurbaniTextColor;
 
-        document.body.classList.remove('layout-top', 'layout-bottom', 'layout-split');
+        document.body.classList.remove(
+          'layout-top',
+          'layout-bottom',
+          'layout-split',
+          'layout-right',
+          'layout-left',
+        );
 
         document.body.classList.add('layout-' + overlayPrefs.overlayVars.layout);
 
@@ -98,6 +104,7 @@
       });
     </script>
   </head>
+
   <body class="layout-bottom bani-overlay-page">
     <section class="overlay-wrapper">
       <div class="content-top">
